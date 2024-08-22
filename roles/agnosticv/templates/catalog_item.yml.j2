@@ -32,6 +32,9 @@ metadata:
 {%   for _label_k, _label_v in (_catalog.labels | default({})).items() %}
     babylon.gpte.redhat.com/{{ _label_k }}: {{ _label_v | to_json }}
 {%   endfor %}
+{%   for _label_k, _label_v in (_catalog.reportingLabels | default({})).items() %}
+    demo.redhat.com/{{ _label_k }}: {{ _label_v | to_json }}
+{%   endfor %}
 {%   if _stage in ['dev','test','prod','event'] %}
     babylon.gpte.redhat.com/stage: {{ _stage | to_json }}
 {%   endif %}
